@@ -29,6 +29,7 @@ module LiquidRenderer
 end
 
 ActionController::Renderers.add :liquid do |content, options|
-  render :text => LiquidRenderer.render(content, options), :content_type => 'text/html'
+  content_type = options.delete(:content_type) || 'text/html'
+  render :text => LiquidRenderer.render(content, options), :content_type => content_type
 end
 
