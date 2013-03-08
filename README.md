@@ -26,6 +26,17 @@ Slightly more advanced usage (adding a top-level scope to the renderers):
 
     render liquid: liquid_content, assigns: assigns, registers: registers, scope: top_level_scope
 
+Usage with a layout (the layout should be a string or respond to_s_):
+
+    render liquid: liquid_content, assigns: assigns, registers: registers, layout: layout_content
+
+The default _assigns_ used for rendering content inside of a layout is *content_for_layout* but can be configured for your environment if different:
+
+    class Application < Rails::Application
+      config.liquid_renderer.content_for_layout = 'page_content'
+    end
+
+
 Instrumentation is available for _liquid.parse_ and _liquid.render_:
 
     ActiveSupport::Notifications.subscribe("liquid.parse") do |*args|
