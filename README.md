@@ -26,9 +26,9 @@ Slightly more advanced usage (adding a top-level scope to the renderers):
 
     render liquid: liquid_content, assigns: assigns, registers: registers, scope: top_level_scope
 
-Usage with a layout (the layout should be a string or respond to_s_):
+Usage with a layout (the layout should be a string or respond to_s):
 
-    render liquid: liquid_content, assigns: assigns, registers: registers, layout: layout_content
+    render liquid: liquid_content, assigns: assigns, registers: registers, layout_content: layout_content
 
 The default _assigns_ used for rendering content inside of a layout is *content_for_layout* but can be configured for your environment if different:
 
