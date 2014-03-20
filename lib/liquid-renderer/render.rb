@@ -33,7 +33,7 @@ module LiquidRenderer
 
   def self.instrument(name, payload)
     if defined?(::ActiveSupport::Notifications)
-      ActiveSupport::Notifications.instrument(name, *payload) { yield }
+      ActiveSupport::Notifications.instrument(name, payload) { yield }
     else
       yield
     end
