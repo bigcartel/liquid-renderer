@@ -10,10 +10,10 @@ module LiquidRenderer
     # Render the page content
     rendered_content = _render(content, context, options[:payload])
 
-    # If layout_content has been specified, render it and set assigns to our already-rendered content.
+    # If layout_content has been specified, render it and set assigns/registers to our already-rendered content.
     # Note that we can't use 'layout' here because ActionView helpfully tries to turn any string passed to it into a file path relative to 'layouts/'
     if options[:layout_content] and options[:layout_content].kind_of?(String)
-      options[:assigns][Rails.configuration.liquid_renderer['content_for_layout']] = rendered_content
+      options[:assigns][Rails.configuration.liquid_renderer['content_for_layout']] = options[:registers][Rails.configuration.liquid_renderer['content_for_layout']] = rendered_content
       rendered_content = _render(options[:layout_content], context, options[:payload])
     end
 
